@@ -27,7 +27,7 @@ const palabras = [
     audio: "https://www.soundjay.com/nature/ocean-wave-1.mp3"
   },
   {
-    palabra: "NENE",
+    palabra: "ISIDRO",
     imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Child_icon.svg/512px-Child_icon.svg.png",
     audio: "https://www.soundjay.com/human/baby-crying-01.mp3"
   }
@@ -46,8 +46,8 @@ export default function TracingPalabrasApp() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#f0f0f0";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.font = "bold 100px Arial";
-    ctx.fillStyle = "#cccccc";
+    ctx.font = "bold 90px Comic Sans MS";
+    ctx.fillStyle = "#bbbbbb";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText(currentWord.palabra, canvas.width / 2, canvas.height / 2);
@@ -57,10 +57,7 @@ export default function TracingPalabrasApp() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     ctx.beginPath();
-    ctx.moveTo(
-      e.nativeEvent.offsetX,
-      e.nativeEvent.offsetY
-    );
+    ctx.moveTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
     setDrawing(true);
   };
 
@@ -68,10 +65,7 @@ export default function TracingPalabrasApp() {
     if (!drawing) return;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-    ctx.lineTo(
-      e.nativeEvent.offsetX,
-      e.nativeEvent.offsetY
-    );
+    ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
     ctx.strokeStyle = "blue";
     ctx.lineWidth = 6;
     ctx.lineCap = "round";
@@ -92,8 +86,8 @@ export default function TracingPalabrasApp() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4 p-4">
-      <h1 className="text-2xl font-bold">Aprender Palabras</h1>
+    <div className="flex flex-col items-center gap-4 p-4 bg-gradient-to-r from-yellow-200 via-pink-200 to-blue-200 min-h-screen">
+      <h1 className="text-4xl font-extrabold text-purple-700">¡Aprendamos Palabras!</h1>
       <img
         src={currentWord.imagen}
         alt={currentWord.palabra}
@@ -103,7 +97,7 @@ export default function TracingPalabrasApp() {
         ref={canvasRef}
         width={300}
         height={200}
-        className="border-2 border-gray-300 rounded-lg bg-white touch-none"
+        className="border-4 border-purple-400 rounded-xl bg-white touch-none"
         onMouseDown={startDrawing}
         onMouseMove={draw}
         onMouseUp={stopDrawing}
